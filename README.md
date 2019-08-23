@@ -13,26 +13,26 @@
 - ###### DATA MODELING
     Since the Data Modeling philosophy in Apache Cassandra is creating table based on queries, this project will do the data modeling task based on queries we receive from the analytical team. In the follow paragraph, it shows the queries from analytical team and how we do data modeling based on these queries.
 
-**Query 1:** Give me the artist, song title and song's length in the music app history that was heard during sessionId = 338, and itemInSession = 4
-```
-query = "CREATE TABLE IF NOT EXISTS song_information_on_specific_session"
+    **Query 1:** Give me the artist, song title and song's length in the music app history that was heard during sessionId = 338, and itemInSession = 4
+    ```
+    query = "CREATE TABLE IF NOT EXISTS song_information_on_specific_session"
 
-query = query + "(sessionId int, itemInSession int, artist text, song text, length float, PRIMARY KEY (sessionId, itemInSession))"`
-```
+    query = query + "(sessionId int, itemInSession int, artist text, song text, length float, PRIMARY KEY (sessionId, itemInSession))"`
+    ```
 
-**Query 2:** Give me only the following: name of artist, song (sorted by itemInSession) and user (first and last name) for userid = 10, sessionid = 182
-```
-query = "CREATE TABLE IF NOT EXISTS song_for_specific_session_and_user"
+    **Query 2:** Give me only the following: name of artist, song (sorted by itemInSession) and user (first and last name) for userid = 10, sessionid = 182
+    ```
+    query = "CREATE TABLE IF NOT EXISTS song_for_specific_session_and_user"
 
-query = query + "(sessionId int, userId int, itemInSession int, artist text, song text, firstName text, lastName text, PRIMARY KEY ((sessionId, userid), itemInSession))"
-```
+    query = query + "(sessionId int, userId int, itemInSession int, artist text, song text, firstName text, lastName text, PRIMARY KEY ((sessionId, userid), itemInSession))"
+    ```
 
-**Query 3:** Give me every user name (first and last) in my music app history who listened to the song 'All Hands Against His Own'<br/>
-```
-query = "CREATE TABLE IF NOT EXISTS song_listerned_by_who"
+    **Query 3:** Give me every user name (first and last) in my music app history who listened to the song 'All Hands Against His Own'<br/>
+    ```
+    query = "CREATE TABLE IF NOT EXISTS song_listerned_by_who"
 
-query = query + "(song text, userId int, firstName text, lastName text, PRIMARY KEY (song, userId))"
-```
+    query = query + "(song text, userId int, firstName text, lastName text, PRIMARY KEY (song, userId))"
+    ```
 ------------
 #### FILES IN THE REPOSITORY
 1. **etl.ipynb**: a jupyter notebook file which detail how access to Casandra database, extract data from the song and log file, transform song and log data into the format the analytics team wants, and dump data into Casandra database.
