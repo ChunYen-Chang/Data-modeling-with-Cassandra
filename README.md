@@ -1,21 +1,23 @@
 # Data modeling with Cassandra (By using Sparkify data)
 #### PROJECT BACKGROUND AND SUMMARY
 - ###### BACKGROUND
-Sparkify is a startup company which provides the music streaming app. Recently, the analytics team in this company is interested in understanding their user activity on its music streaming app in order to provide better user experience for their user. To achieve the goal, the analytical team sets up a relational database (postgres) to store the users' data. However, instead of using relational database to store the data, the analytical team now decides to use a no-sql database (Cassandra) to store the data. This project aims for creating a Cassandra database which hosts all user activity data, song data, and users' personal data. 
+    Sparkify is a startup company which provides the music streaming app. Recently, the analytics team in this company is interested in understanding their user activity on its music streaming app in order to provide better user experience for their user. To achieve the goal, the analytical team sets up a relational database (postgres) to store the users' data. However, instead of using relational database to store the data, the analytical team now decides to use a no-sql database (Cassandra) to store the data. This project aims for creating a Cassandra database which hosts all user activity data, song data, and users' personal data. 
 
 - ###### PROJECT DETAILS
-In this project, it will create an ETL data pipeline to extract data from log dataset and song dataset, transform these data into a format which analytics team prefers, and put data into a Cassandra database. The detailed ETL process can be described below:
+    In this project, it will create an ETL data pipeline to extract data from log dataset and song dataset, transform these data into a format which analytics team prefers, and put data into a Cassandra database. The detailed ETL process can be described below:
 
-**Step 1:** Use python to extract data from all csv files and save into an "overall csv file" for further use.
+    **Step 1:** Use python to extract data from all csv files and save into an "overall csv file" for further use.
 
-**Step 2:** Design Cassandra tables based on analytics team's need and put data in these tables. As the design philosophy in Cassandra is different than tranditional SQL database (**Create table based on queries**), we must develop the table based on queries the analytics team prefers
+    **Step 2:** Design Cassandra tables based on analytics team's need and put data in these tables. As the design philosophy in Cassandra is different than tranditional SQL database (**Create table based on queries**), we must develop the table based on queries the analytics team prefers
 
 - ###### DATA MODELING
-Since the Data Modeling philosophy in Apache Cassandra is creating table based on queries, this project will do the data modeling task based on queries we receive from the analytical team. In the follow paragraph, it shows the queries from analytical team and how we do data modeling based on these queries.
+    Since the Data Modeling philosophy in Apache Cassandra is creating table based on queries, this project will do the data modeling task based on queries we receive from the analytical team. In the follow paragraph, it shows the queries from analytical team and how we do data modeling based on these queries.
 
 **Query 1:** Give me the artist, song title and song's length in the music app history that was heard during sessionId = 338, and itemInSession = 4
 ```
-query = "CREATE TABLE IF NOT EXISTS song_information_on_specific_session"query = query + "(sessionId int, itemInSession int, artist text, song text, length float, PRIMARY KEY (sessionId, itemInSession))"`
+query = "CREATE TABLE IF NOT EXISTS song_information_on_specific_session"
+
+query = query + "(sessionId int, itemInSession int, artist text, song text, length float, PRIMARY KEY (sessionId, itemInSession))"`
 ```
 
 **Query 2:** Give me only the following: name of artist, song (sorted by itemInSession) and user (first and last name) for userid = 10, sessionid = 182
