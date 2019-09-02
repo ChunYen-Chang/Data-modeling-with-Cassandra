@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="500" height="170" src="https://upload.cc/i1/2019/09/03/lYa3cL.jpg">
+</p>
+
 # Data modeling with Cassandra (By using Sparkify data)
 #### PROJECT BACKGROUND AND SUMMARY
 - ###### BACKGROUND
