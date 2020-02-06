@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="500" height="170" src="https://upload.cc/i1/2019/09/03/lYa3cL.jpg">
+  <img width="500" height="170" src="https://github.com/ChunYen-Chang/Data-modeling-with-Cassandra/blob/master/images/cassandra_logo.jpg">
 </p>
 
 # Data modeling with Cassandra (By using Sparkify data)
